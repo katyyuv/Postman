@@ -17,6 +17,12 @@ pm.test("Body matches string", function () {
     pm.expect(pm.response.text()).to.include("This is the first responce from server!ss");
 });
 ```
+OR 
+```
+pm.test("Body is correct", function () {
+    pm.response.to.have.body("This is the first responce from server!ss");
+});
+```
 
 > http://162.55.220.72:5007/user_info_3
 1. Send repsonse
