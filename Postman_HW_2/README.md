@@ -1,5 +1,5 @@
 ## EP1 http://162.55.220.72:5007/first
-### 1. Send response
+### 1. Send a request to the server
 
 `GET http://162.55.220.72:5007/first`
 
@@ -25,7 +25,7 @@ pm.test("Body is correct", function () {
 ```
 
 ## EP2 http://162.55.220.72:5007/user_info_3
-### 1. Send response
+### 1. Send a request to the server
 
 `POST http://162.55.220.72:5007/user_info_3`
 
@@ -93,9 +93,9 @@ pm.test("Check salary is " + (+req_Salary * 4), function () {
 ```
 
 ## EP3 http://162.55.220.72:5007/object_info_3
-### 1. Send response
+### 1. Send a request to the server
 
-`GET http://162.55.220.72:5007/object_info_3`
+`GET http://162.55.220.72:5007/object_info_3?name=Kate&age=21&salary=400`
 ### 2. Status code 200
 ```
 pm.test("Status code is 200", function () {
@@ -158,5 +158,26 @@ var resp_name_dog = respBody.family.pets.dog.name
 var resp_age_dog = respBody.family.pets.dog.age
  pm.test("Check dog's age is 4", function () {
     pm.expect(resp_age_dog).to.eql(4);
+});
+```
+
+## EP4 http://162.55.220.72:5005/object_info_4
+### 1. Send a request to the server
+'GET http://162.55.220.72:5007/object_info_4?name=Kate&age=21&salary=400'
+### 2. Status code 200
+```
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+```
+### 3. Sparse response body to json
+`var respBody = pm.response.json()`
+### 4. Sparse request
+`var reqBody = pm.request.url.query.toObject()`
+### 5. Check that the name in the response is equal to the name s request (name from the request)
+```
+var req_name = reqBody.name
+pm.test('Check name is ' + req_name, function () {
+    pm.expect(respBody.name).to.eql(req_name);
 });
 ```
