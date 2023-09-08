@@ -181,3 +181,45 @@ pm.test('Check name is ' + req_name, function () {
     pm.expect(respBody.name).to.eql(req_name);
 });
 ```
+### 6. Check that the age in the response is equal to the age s request (age from the request)
+```
+var req_age = reqBody.age
+pm.test("Check age is", function () {
+    pm.expect(respBody.age).to.eql(+req_age);
+});
+```
+### 7. Console the salary parameter from request
+`console.log (reqBody.salary)`
+### 8. Console the salary parameter from response
+`console.log (respBody.salary)`
+### 9. Console the 0th element of the salary parameter from response
+`console.log (respBody.salary[0])`
+### 10. Console the 1st element of the salary parameter from response
+`console.log (respBody.salary[1])`
+### 11. Console the 2nd element of the salary parameter from response
+`console.log (respBody.salary[2])`
+### 12. Check that the 0th element of the salary parameter is equal to the salary from the request (salary from the request)
+```
+var req_salary = reqBody.salary
+pm.test("Check salary is " + req_salary, function () {
+    pm.expect(respBody.salary[0]).to.eql(+req_salary);
+});
+
+```
+### 13. Check that the 1st element of the salary parameter is equal to the salary from the request (salary from the request)
+```
+var req_salary = reqBody.salary
+pm.test("Check salary is " + req_salary*2, function () {
+    pm.expect(+respBody.salary[1]).to.eql(req_salary*2);
+});
+
+```
+### 14. Check that the 2nd element of the salary parameter is equal to the salary from the request (salary from the request)
+```
+var req_salary = reqBody.salary
+pm.test("Check salary is " + req_salary*3, function () {
+    pm.expect(+respBody.salary[2]).to.eql(req_salary*3);
+});
+
+```
+### 15. 
